@@ -1,0 +1,7 @@
+.dashboard-chart {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: conic-gradient(#4040a3 0% 25%,
+            #33a64c 0% 75%);
+}
