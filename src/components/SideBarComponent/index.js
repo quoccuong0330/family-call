@@ -68,9 +68,9 @@ const SideBarComponent = () => {
 
   return (
     <header id="header">
-      <a href="./" class="header-logo">
+      <Link to="/" class="header-logo">
         Family Voice
-      </a>
+      </Link>
       <nav class="header-nav">
         <ul class="header-nav__menu">
           {menuItems.length > 0 &&

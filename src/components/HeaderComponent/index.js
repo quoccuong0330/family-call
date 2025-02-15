@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/scss/styles.scss";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../App";
 
 const HeaderComponent = (props) => {
-  const {title} = props
+  const { title } = props;
   const [isShowMenu, setIsShowMenu] = useState(false);
-  console.log(isShowMenu)
+  const { currentUser } = useContext(AppContext);
 
+ 
   return (
     <div class="heading-note">
       <h1 class="heading-note__ttl">{title}</h1>
-      <div class="heading-note__account "  onClick={() => setIsShowMenu(!isShowMenu)}>
-        <span class="heading-note__account-name">Nguyễn Văn Toàn</span>
-        <div
-          class="heading-note__account-avatar"
-         
-        >
+      <div
+        class="heading-note__account "
+        onClick={() => setIsShowMenu(!isShowMenu)}
+      >
+        <span class="heading-note__account-name">{currentUser?.role}</span>
+        <div class="heading-note__account-avatar">
           <img src={require("../../img/avatar.png")} alt="img" />
         </div>
         <ul class={`${isShowMenu && "active"} heading-note__account-profile`}>
