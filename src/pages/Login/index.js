@@ -1,13 +1,25 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../App";
 
 export default function Login(second) {
   const { currentUser, setCurrentUser, users } = useContext(AppContext);
   const [value, setValue] = useState("");
+  const navigate = useNavigate();
+
   const handleSaveCurrentUser = () => {
-    setCurrentUser(...users.filter((user) => user.name === value));
-    console.log("currentUser", currentUser)
+    const user = users.find((user) => user.name === value);
+    if (user) {
+      setCurrentUser(user);
+      console.log("New currentUser:", user); // Debugging
+      if (user.role === "Prisoner") {
+        navigate("/prisoner"); // Chỉ navigate nếu role là Prisoner
+      } else {
+        navigate("/tao-moi-lich-goi");
+      }
+    } else {
+      alert("User không tồn tại!");
+    }
   };
   return (
     <div class="login">
@@ -35,15 +47,14 @@ export default function Login(second) {
             </dd>
           </dl>
           <div class="login-show__form-sub">
-            <Link
-              to="/thong-ke"
+            <button
               type="button"
               class="c-btn__01"
               onClick={() => handleSaveCurrentUser()}
             >
               {" "}
               Đăng Nhập{" "}
-            </Link>
+            </button>
           </div>
           <div class="login-show__form-note">
             <a href="">Quên mật khẩu</a>

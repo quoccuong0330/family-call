@@ -64,7 +64,6 @@ const SideBarComponent = () => {
     },
   ];
 
-  console.log(activeIndex, openMenus);
 
   return (
     <header id="header">

@@ -12,6 +12,7 @@ import AddPrisoner from "./pages/AddPrisoner";
 import Login from "./pages/Login";
 import HistoryCall from "./pages/HistoryCall";
 import { createContext, useState } from "react";
+import PrisonerScreen from "./pages/PrisonerScreen";
 
 export const AppContext = createContext();
 
@@ -21,12 +22,12 @@ function App() {
   const users = [
     {
       id: 1,
-      name: "Quang",
+      name: "quan_giao",
       role: "Police",
     },
     {
       id: 2,
-      name: "Cuong",
+      name: "pham_nhan",
       role: "Prisoner",
     },
     {
@@ -42,11 +43,13 @@ function App() {
       family_id: 3,
     },
   ];
-  
+
   const timestamp = Date.now();
 
   return (
-    <AppContext.Provider value={{ currentUser, setCurrentUser, users, prisoners,timestamp }}>
+    <AppContext.Provider
+      value={{ currentUser, setCurrentUser, users, prisoners, timestamp }}
+    >
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<Dashboard />} />
@@ -70,9 +73,8 @@ function App() {
           {/* setting */}
           <Route path="setting" element={<NotFound />} />
         </Route>
-        <Route path="/login">
-          <Route path="" element={<Login />} />
-        </Route>
+        <Route path="prisoner" element={<PrisonerScreen />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </AppContext.Provider>
   );

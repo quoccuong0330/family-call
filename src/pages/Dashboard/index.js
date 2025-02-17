@@ -3,9 +3,7 @@ import HeaderComponent from "../../components/HeaderComponent";
 import "./styles.css";
 import { AppContext } from "../../App";
 export default function Dashboard() {
-  const { currentUser,  users } = useContext(AppContext);
-  console.log(currentUser, users);
- 
+
   return (
     <>
       <HeaderComponent title="Tổng quan" />

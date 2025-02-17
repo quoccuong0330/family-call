@@ -1,0 +1,7 @@
+.watermark {
+
+} 
+
+&.leftwatermark {
+    display: none;
+}
